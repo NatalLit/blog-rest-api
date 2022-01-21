@@ -3,6 +3,7 @@ package com.lytvynova.service;
 import com.lytvynova.entity.Post;
 import com.lytvynova.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findAll() {
         return postRepository.findAll();
+    }
+
+    @Override
+    public List<Post> findAllPostsByTitle(String title) {
+        return postRepository.findAllByTitleIgnoreCase(title);
     }
 
     @Override
@@ -41,6 +47,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public void deletePost(Long id) {
         postRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Post> sortAllPosts(String sortParameter) {
+        return postRepository.findAll(Sort.by(Sort.Direction.ASC, sortParameter));
     }
 
 

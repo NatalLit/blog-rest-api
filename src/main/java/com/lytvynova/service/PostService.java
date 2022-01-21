@@ -8,10 +8,14 @@ public interface PostService {
 
     public List<Post> findAll();
 
-    public Post addPost (Post post);
+    public List<Post> findAllPostsByTitle(String title);
 
-   public Post editPost(Long id, Post post);
+    public Post addPost(Post post);
+
+    public Post editPost(Long id, Post post);
 
     public void deletePost(Long id);
+
+    List<Post> sortAllPosts(String sortParameter);
 
 }
