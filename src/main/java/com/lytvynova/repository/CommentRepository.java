@@ -1,16 +1,16 @@
 package com.lytvynova.repository;
 
+import com.lytvynova.entity.Comment;
 import com.lytvynova.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post,Long> {
+public interface CommentRepository extends JpaRepository <Comment, Long> {
+    List<Comment> findAllByPost(Post post);
 
-    List<Post> findAllByTitleIgnoreCase(String title);
+    Comment findByCommentIdAndPost(Long commentId, Post post);
 
-    List<Post> findByStarTrue();
 }

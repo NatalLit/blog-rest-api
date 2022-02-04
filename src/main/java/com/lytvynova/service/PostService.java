@@ -1,5 +1,6 @@
 package com.lytvynova.service;
 
+import com.lytvynova.dto.PostWithoutCommentDto;
 import com.lytvynova.entity.Post;
 
 import java.util.List;
@@ -16,6 +17,15 @@ public interface PostService {
 
     public void deletePost(Long id);
 
-    List<Post> sortAllPosts(String sortParameter);
+    public List<Post> sortAllPosts(String sortParameter);
+
+   public List<Post> findAllTopPosts();
+
+    public Post markTopPost(Long id);
+
+    public Post deleteTopMark(Long id);
+
+    public Post getPostWithComments(Long id);
+
 
 }
